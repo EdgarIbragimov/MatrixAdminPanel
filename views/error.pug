@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  .error-container
+    .error-status #{error.status || '404'} Status
+  h1= message
+  h2= error.status
+  pre #{error.stack}

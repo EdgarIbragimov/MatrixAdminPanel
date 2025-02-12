@@ -1,0 +1,6 @@
+{
+  "watchFolder": "public/stylesheets",
+  "outputFolder": "public/stylesheets",
+  "mainFile": "style.less",
+  "sourceMap": true
+}

@@ -1,0 +1,59 @@
+extends ../layout
+
+block content
+    .user-list-container
+        h1 User List
+        table.user-table
+            if userslist && userslist.length > 0
+                each user in userslist
+                    tr.user-row
+                        td.user-cell
+                            .user-details
+                                .user-name.input-group.mb-3
+                                    .form-floating
+                                        input.form-control(type="text", placeholder=user.fullname, id="floatingInputValue", value=user.fullname, aria-describedby="button-addon2")
+                                        label(for="floatingInputValue") Fullname
+                                    button.btn.btn-outline-secondary(type="button", id="button-addon2") Change
+                                .email.input-group.mb-3
+                                    .form-floating
+                                        input.form-control(type="email", placeholder="name@example.ru", id="floatingInputValue", value=user.email, aria-describedby="button-addon2")
+                                        label(for="floatingInputValue") Email
+                                    button.btn.btn-outline-secondary(type="button", id="button-addon2") Change
+                                .birthdate.input-group.mb-3
+                                    .form-floating
+                                        input.form-control(
+                                            type="date", 
+                                            placeholder="Birthdate", 
+                                            id="floatingBirthdate", 
+                                            value=user.birthdate, 
+                                            aria-describedby="birthdate-button"
+                                        )
+                                        label(for="floatingBirthdate") Birthdate
+                                .role.input-group.mb-3
+                                    input.form-control(type="text", value = user.role, class=`role-${user.role}`,readonly)
+                                    button.btn.btn-outline-secondary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false") Change
+                                    ul.dropdown-menu.dropdown-menu-dark
+                                        li
+                                            a.dropdown-item.role-admin(href="#") admin
+                                        li
+                                            a.dropdown-item.role-user(href="#") user
+                                .status.input-group.mb-3
+                                    input.form-control(type="text", value = user.status, class=`status-${user.status}`, readonly)
+                                    button.btn.btn-outline-secondary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false") Change
+                                    ul.dropdown-menu.dropdown-menu-dark
+                                        li
+                                            a.dropdown-item.status-active(href="#") active
+                                        li
+                                            a.dropdown-item.status-unverified(href="#") unverified
+                                        li
+                                            a.dropdown-item.status-blocked(href="#") blocked
+                                .buttons-group.d-flex.gap-2
+                                    button.btn.btn-success.save-changes(data-id=user.id) Save Changes
+                                    button.btn.btn-outline-light.user-friends(data-id=user.id) User's Friends
+                                    button.btn.btn-outline-light.user-feed(data-id=user.id) User's Feed
+                        td.avatar-cell
+                            .user-avatar
+                                img(src=user.photo, alt="User Avatar", class="avatar")
+            else
+                tr
+                    td(colspan="2").no-users No users found                    

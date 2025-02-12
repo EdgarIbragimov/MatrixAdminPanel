@@ -1,0 +1,32 @@
+extends user_layout
+
+block content-user
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+    script(src="/javascripts/profile.js")
+    script.
+        const currentUserId = "#{currentUserId}";
+    .main-content-container
+        if user
+            .profile__info
+                .user__details
+                    .user__name= user.fullname
+                    .birthdate Birthdate: #{user.birthdate || 'Not specified'}
+                    .email Email: #{user.email || 'Not specified'}
+                    .role Role: #{user.role || 'User'}
+                    .status Status: 
+                        span(class=`status-text ${user.status || 'unverified'}`)= user.status || 'Unverified'
+                    .stats-container
+                        .stat-item
+                            span.stat-number= friendsCount
+                            span.stat-label= ' Friends'
+                        .stat-item
+                            span.stat-number= postsCount
+                            span.stat-label= ' Posts'
+                .picture__container
+                    img.profile__photo(src=user.photo || '/images/default.png' alt="Profile Photo")
+            .feed-container
+                h2.feed-title My Posts
+                .posts-container#userPosts
+        else
+            .error-message
+                p User data not available

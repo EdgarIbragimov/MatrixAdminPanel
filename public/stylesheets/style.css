@@ -1,0 +1,203 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold-Italic.woff2") format("woff2"), url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold-Italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold.woff2") format("woff2"), url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  margin: 0;
+  background-color: #000000;
+}
+
+.title-container {
+  background-color: #151515;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 10%;
+}
+
+.title {
+  position: absolute;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.logout-button {
+  position: absolute;
+  right: 10%;
+  background: none;
+  border: none;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.logout-button:hover {
+  transform: translateY(-3px);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.user-list-container {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 80%;
+}
+@media (min-width: 768px) {
+  .user-list-container {
+    width: 80%;
+  }
+}
+@media (min-width: 1200px) {
+  .user-list-container {
+    max-width: 1400px;
+  }
+}
+.user-list-container h1 {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid #7b7b7b;
+}
+.user-list-container .no-users {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+.user-list-container .form-control {
+  background-color: #000000 !important;
+  border-color: #7b7b7b !important;
+  color: #ffffff !important;
+}
+.user-list-container .form-control:focus, .user-list-container .form-control:active {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+}
+.user-list-container .form-floating label {
+  color: #ffffff !important;
+}
+.user-list-container .form-floating label::after {
+  background-color: #000000 !important;
+}
+.user-list-container .form-floating > .form-control:focus ~ label,
+.user-list-container .form-floating > .form-control:not(:placeholder-shown) ~ label {
+  opacity: 1;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+.user-list-container .status-active {
+  color: #28a745 !important;
+}
+.user-list-container .status-unverified {
+  color: #ffc107 !important;
+}
+.user-list-container .status-blocked {
+  color: #dc3545 !important;
+}
+.user-list-container input.status-active {
+  color: #28a745 !important;
+  font-weight: 500;
+}
+.user-list-container input.status-unverified {
+  color: #ffc107 !important;
+  font-weight: 500;
+}
+.user-list-container input.status-blocked {
+  color: #dc3545 !important;
+  font-weight: 500;
+}
+.user-list-container .role-admin {
+  color: #40e0d0 !important;
+}
+.user-list-container .role-user {
+  color: #ffffff !important;
+}
+.user-list-container input.role-admin {
+  color: #40e0d0 !important;
+  font-weight: 500;
+}
+.user-list-container input.role-user {
+  color: #ffffff !important;
+}
+.user-list-container .buttons-group {
+  margin-top: 10px;
+}
+.user-list-container .buttons-group .btn-outline-light {
+  background-color: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+.user-list-container .buttons-group .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+.user-list-container .user-table {
+  width: 100%;
+  border-spacing: 0;
+}
+.user-list-container .user-table .user-row {
+  border-bottom: 1px solid #7b7b7b;
+}
+.user-list-container .user-table .user-row td {
+  vertical-align: middle;
+}
+.user-list-container .user-table .user-row .user-cell {
+  width: 40%;
+  padding: 10px;
+}
+.user-list-container .user-table .user-row .user-cell .user-details {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1;
+}
+.user-list-container .user-table .user-row .avatar-cell {
+  width: 40%;
+  padding: 20px;
+  text-align: center;
+}
+.user-list-container .user-table .user-row .avatar-cell .user-avatar {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.user-list-container .user-table .user-row .avatar-cell .user-avatar:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.user-list-container .user-table .user-row .avatar-cell .avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*# sourceMappingURL=style.css.map */

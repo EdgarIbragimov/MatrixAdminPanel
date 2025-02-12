@@ -1,0 +1,76 @@
+[
+  {
+    "id": "news-001",
+    "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+    "content": "Just finished setting up my new matrix profile! Excited to connect with everyone here.",
+    "date": "2024-03-15T10:30:00Z",
+    "likes": ["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"],
+    "comments": [
+      {
+        "id": "comment-001",
+        "userId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "content": "Welcome to matrix!",
+        "date": "2024-03-15T10:35:00Z"
+      }
+    ]
+  },
+  {
+    "id": "news-002",
+    "userId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+    "content": "Working on some cool new features for our platform. Stay tuned!",
+    "date": "2024-03-14T15:20:00Z",
+    "likes": [
+      "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+      "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7"
+    ],
+    "comments": [
+      {
+        "id": "comment-002",
+        "userId": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+        "content": "Can't wait to see what you're working on!",
+        "date": "2024-03-14T15:25:00Z"
+      }
+    ]
+  },
+  {
+    "id": "news-003",
+    "userId": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+    "content": "Just discovered an amazing algorithm for matrix calculations! 🚀 #coding #mathematics",
+    "date": "2024-03-13T09:15:00Z",
+    "likes": [
+      "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+      "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"
+    ],
+    "comments": [
+      {
+        "id": "comment-003",
+        "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "content": "This is brilliant! Could you share more details?",
+        "date": "2024-03-13T09:20:00Z"
+      }
+    ]
+  },
+  {
+    "id": "news-004",
+    "userId": "d4e5f6g7-h8i9-j0k1-l2m3-n4o5p6q7r8s9",
+    "content": "Hosting a virtual meetup next week about quantum computing in the matrix. Who's interested? 🖥️",
+    "date": "2024-03-12T14:45:00Z",
+    "likes": [],
+    "comments": []
+  },
+  {
+    "id": "news-005",
+    "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+    "content": "Finally solved that tricky bug in my code! Sometimes all you need is a fresh perspective. #debugging",
+    "date": "2024-03-11T16:30:00Z",
+    "likes": ["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"],
+    "comments": [
+      {
+        "id": "comment-004",
+        "userId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "content": "Great job! What was the issue?",
+        "date": "2024-03-11T16:35:00Z"
+      }
+    ]
+  }
+]

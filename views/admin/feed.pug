@@ -1,0 +1,10 @@
+extends ../layout
+
+block content
+  script.
+    const currentUserId = "#{currentUserId}";
+  .feed-container
+    h1.feed-title All Posts Feed
+    .posts-container#adminPosts
+    .load-more-container
+      button.load-more-btn(type="button") Load More Posts

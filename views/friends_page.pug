@@ -1,0 +1,18 @@
+extends user_layout
+
+block content-user
+  .main-content-container
+    .friends-list-container
+      h1 Friends List
+      .friends-table#friendsList
+        if friends && friends.length > 0
+          each friend in friends
+            .friend-row(data-id=friend.id)
+              .friend-avatar
+                img.friend-photo(src=friend.photo || '/images/default.png' alt=`${friend.fullname}'s photo`)
+              .friend-name= friend.fullname
+              .friend-email= friend.email
+              .friend-status
+                span.status-text(class=friend.status)= friend.status
+        else
+          .no-friends You don't have any friends yet
