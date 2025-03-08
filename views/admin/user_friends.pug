@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+    .friends-list-container
+        h1 Friends of User
+        table.friends-table
+            if friends && friends.length
+                each friend in friends
+                    tr.friend-row(data-user-id=friend.id)
+                        td.col-md-1
+                            .friend-avatar
+                                img.friend-photo(src=friend.photo alt="Friend Avatar")
+                        td.col-md-2
+                            .friend-name #{friend.fullname}
+                        td.col-md-3
+                            .friend-email #{friend.email}
+                        td.col-md-4
+                            .friend-status
+                                span(class=`status-${friend.status.toLowerCase()}`) #{friend.status}
+                        td.col-md-5
+                            button.btn.btn-outline-danger.delete-friend-btn(type="button" data-friend-id=friend.id title="Delete from friends?") X
+                                i.fas.fa-times-circle
+            else
+                .no-friends No friends found

@@ -1,10 +1,92 @@
 extends ../layout
 
 block content
-  script.
-    const currentUserId = "#{currentUserId}";
-  .feed-container
-    h1.feed-title All Posts Feed
-    .posts-container#adminPosts
-    .load-more-container
-      button.load-more-btn(type="button") Load More Posts
+  input#currentUserId(type="hidden" value=currentUserId)
+  
+  .feed-list-container
+    h1 #{user.fullname}'s Feed
+    
+    if posts && posts.length > 0
+      .posts-list
+        each post in posts
+          .post-item(
+            class=`${post.isDeleted ? 'deleted-post' : ''} ${post.isBlocked ? 'blocked-post' : ''}`
+            data-original-content=post.content
+          )
+            .post-header
+              .post-author-info
+                img.author-avatar(src=post.userPhoto || "/images/default.png", alt=post.userName)
+                .author-details
+                  .author-name #{post.userName}
+                  .post-date #{new Date(post.date).toLocaleString()}
+              
+              .post-status-badges
+                if post.isDeleted
+                  span.deleted-status.status-badge DELETED
+                if post.isBlocked
+                  span.blocked-status.status-badge BLOCKED
+            
+            .post-content
+              if post.isDeleted
+                p.system-message This post was deleted by the admin, because it violated the community rules.
+              else if post.isBlocked
+                p.system-message This post was blocked by the admin, because it violated the community rules.
+              else
+                p #{post.content}
+            
+            .post-meta
+              span.likes-count
+                i.fas.fa-heart
+                | #{post.likes.length} likes
+              span.comments-count
+                i.fas.fa-comment
+                | #{post.comments.length} comments
+            
+            .post-actions
+              button.delete-post-btn(
+                data-post-id=post.id,
+                disabled=post.isDeleted,
+                title="Mark as deleted"
+              ) 
+                i.fas.fa-trash-alt
+                span Delete
+              
+              button.restore-post-btn(
+                data-post-id=post.id,
+                disabled=!post.isDeleted,
+                title="Restore deleted post"
+              ) 
+                i.fas.fa-undo
+                span Restore
+              
+              button.block-post-btn(
+                data-post-id=post.id,
+                disabled=post.isBlocked || post.isDeleted,
+                title="Block this post"
+              ) 
+                i.fas.fa-ban
+                span Block
+              
+              button.unblock-post-btn(
+                data-post-id=post.id,
+                disabled=!post.isBlocked || post.isDeleted,
+                title="Unblock this post"
+              ) 
+                i.fas.fa-unlock
+                span Unblock
+            
+            if post.comments && post.comments.length > 0
+              .comments-container
+                button.toggle-comments-btn(class=post.isDeleted ? "deleted-btn" : post.isBlocked ? "blocked-btn" : "")
+                  i.fas.fa-angle-down
+                  |  Show Comments
+                
+                .comments-section.hidden
+                  each comment in post.comments
+                    .comment-item
+                      .comment-header
+                        .comment-author #{comment.userName || 'ID: ' + comment.userId}
+                        .comment-date #{new Date(comment.date).toLocaleString()}
+                      .comment-content #{comment.content}
+    else
+      .no-posts No posts to display.

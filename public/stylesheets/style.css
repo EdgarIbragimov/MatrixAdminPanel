@@ -17,6 +17,11 @@ body {
   background-color: #000000;
 }
 
+html {
+  min-width: 1024px;
+  overflow-x: auto;
+}
+
 .title-container {
   background-color: #151515;
   height: 100px;
@@ -63,17 +68,9 @@ body {
   border-radius: 10px;
   padding: 10px;
   margin: 20px auto;
-  width: 80%;
-}
-@media (min-width: 768px) {
-  .user-list-container {
-    width: 80%;
-  }
-}
-@media (min-width: 1200px) {
-  .user-list-container {
-    max-width: 1400px;
-  }
+  width: 60%;
+  min-width: 900px;
+  overflow-x: auto;
 }
 .user-list-container h1 {
   font-family: "JetBrains Mono", monospace;
@@ -110,24 +107,24 @@ body {
   transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
 }
 .user-list-container .status-active {
-  color: #28a745 !important;
+  color: #4caf50 !important;
 }
 .user-list-container .status-unverified {
-  color: #ffc107 !important;
+  color: #e3d12f !important;
 }
 .user-list-container .status-blocked {
-  color: #dc3545 !important;
+  color: #f44336 !important;
 }
 .user-list-container input.status-active {
-  color: #28a745 !important;
+  color: #4caf50 !important;
   font-weight: 500;
 }
 .user-list-container input.status-unverified {
-  color: #ffc107 !important;
+  color: #e3d12f !important;
   font-weight: 500;
 }
 .user-list-container input.status-blocked {
-  color: #dc3545 !important;
+  color: #f44336 !important;
   font-weight: 500;
 }
 .user-list-container .role-admin {
@@ -144,30 +141,52 @@ body {
   color: #ffffff !important;
 }
 .user-list-container .buttons-group {
+  min-width: 450px;
+  flex-wrap: nowrap;
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.user-list-container .buttons-group button {
+  flex: 1;
+  min-width: 120px;
+}
+.user-list-container .buttons-group .save-changes {
+  width: 180px;
+  white-space: nowrap;
 }
 .user-list-container .buttons-group .btn-outline-light {
+  width: 180px;
   background-color: #000000;
   border: 2px solid #ffffff;
   color: #ffffff;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 .user-list-container .buttons-group .btn-outline-light:hover {
   background-color: #ffffff;
   color: #000000;
 }
+.user-list-container .buttons-group .btn-outline-light:active {
+  color: #000000;
+}
 .user-list-container .user-table {
   width: 100%;
+  min-width: 880px;
   border-spacing: 0;
 }
 .user-list-container .user-table .user-row {
   border-bottom: 1px solid #7b7b7b;
+}
+.user-list-container .user-table .user-row:last-child {
+  border-bottom: none;
 }
 .user-list-container .user-table .user-row td {
   vertical-align: middle;
 }
 .user-list-container .user-table .user-row .user-cell {
   width: 40%;
+  min-width: 500px;
   padding: 10px;
 }
 .user-list-container .user-table .user-row .user-cell .user-details {
@@ -176,6 +195,18 @@ body {
   font-weight: bold;
   font-size: 16px;
   line-height: 1;
+}
+.user-list-container .user-table .user-row .user-cell .input-group {
+  flex-wrap: nowrap;
+  min-width: 450px;
+  max-width: 100%;
+}
+.user-list-container .user-table .user-row .user-cell .input-group .form-control {
+  min-width: 200px;
+  flex-shrink: 1;
+}
+.user-list-container .user-table .user-row .user-cell .input-group .btn {
+  flex-shrink: 0;
 }
 .user-list-container .user-table .user-row .avatar-cell {
   width: 40%;
@@ -187,6 +218,7 @@ body {
   height: 280px;
   margin: 0 auto;
   border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
   overflow: hidden;
   transition: all 0.3s ease;
 }
@@ -198,6 +230,430 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.friends-list-container {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 60%;
+  min-width: 900px;
+  max-width: 1200px;
+  overflow-x: auto;
+}
+.friends-list-container h1 {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid #7b7b7b;
+  margin: 0px;
+}
+.friends-list-container .friends-table {
+  width: 100%;
+  min-width: 880px;
+  border-spacing: 0;
+}
+.friends-list-container .friends-table .friend-row {
+  border-bottom: 1px solid #7b7b7b;
+  padding: 10px 0px;
+  height: 120px;
+}
+.friends-list-container .friends-table .friend-row:last-child {
+  border-bottom: none;
+}
+.friends-list-container .friends-table .friend-row .col-md-1 {
+  min-width: 120px;
+  padding-left: 15px;
+}
+.friends-list-container .friends-table .friend-row .friend-avatar {
+  width: 100px;
+  height: 100%;
+}
+.friends-list-container .friends-table .friend-row .friend-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+.friends-list-container .friends-table .friend-row .friend-avatar img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-2 {
+  width: 250px;
+  min-width: 200px;
+}
+.friends-list-container .friends-table .friend-row .col-md-2 .friend-name {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 10px;
+}
+.friends-list-container .friends-table .friend-row .col-md-3 {
+  width: 300px;
+  min-width: 250px;
+}
+.friends-list-container .friends-table .friend-row .col-md-3 .friend-email {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 {
+  width: 200px;
+  min-width: 150px;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status {
+  text-align: center;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span.status-accepted {
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span.status-pending {
+  color: #e3d12f;
+  border: 1px solid rgba(227, 209, 47, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span.status-blocked {
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-5 {
+  width: auto;
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn {
+  font-size: 24px;
+  width: 120px;
+  height: 60px;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn:hover {
+  background-color: #f44336 !important;
+  transform: translateY(-2px);
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn:hover .fa-times-circle {
+  color: #ffffff !important;
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn:active {
+  transform: translateY(0);
+}
+.friends-list-container .no-friends {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.feed-list-container {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 70%;
+  min-width: 900px;
+  max-width: 1200px;
+}
+.feed-list-container h1 {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid #7b7b7b;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+.feed-list-container .posts-list .post-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #7b7b7b;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+  position: relative;
+}
+.feed-list-container .posts-list .post-item.deleted-post {
+  border-color: rgba(244, 67, 54, 0.5);
+  background-color: rgba(244, 67, 54, 0.1);
+}
+.feed-list-container .posts-list .post-item.blocked-post {
+  border-color: rgba(227, 209, 47, 0.5);
+  background-color: rgba(227, 209, 47, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info {
+  display: flex;
+  align-items: center;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info .author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-right: 12px;
+  object-fit: cover;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info .author-details .author-name {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info .author-details .post-date {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges {
+  display: flex;
+  gap: 10px;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges .status-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges .deleted-status {
+  background-color: rgba(244, 67, 54, 0.8);
+  color: #ffffff;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges .blocked-status {
+  background-color: rgba(227, 209, 47, 0.8);
+  color: #ffffff;
+}
+.feed-list-container .posts-list .post-item .post-content {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.feed-list-container .posts-list .post-item .post-content .system-message {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+  text-align: center;
+  padding: 8px 0;
+}
+.feed-list-container .posts-list .post-item .post-meta {
+  display: flex;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  border-top: 1px solid #7b7b7b;
+  border-bottom: 1px solid #7b7b7b;
+}
+.feed-list-container .posts-list .post-item .post-meta span {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+.feed-list-container .posts-list .post-item .post-meta span i {
+  margin-right: 8px;
+}
+.feed-list-container .posts-list .post-item .post-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+.feed-list-container .posts-list .post-item .post-actions button {
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+}
+.feed-list-container .posts-list .post-item .post-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.feed-list-container .posts-list .post-item .post-actions button i {
+  margin-right: 5px;
+}
+.feed-list-container .posts-list .post-item .post-actions .delete-post-btn {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+.feed-list-container .posts-list .post-item .post-actions .delete-post-btn:hover:not(:disabled) {
+  background-color: rgba(244, 67, 54, 0.6);
+}
+.feed-list-container .posts-list .post-item .post-actions .restore-post-btn {
+  background-color: rgba(76, 175, 80, 0.2);
+}
+.feed-list-container .posts-list .post-item .post-actions .restore-post-btn:hover:not(:disabled) {
+  background-color: rgba(76, 175, 80, 0.6);
+}
+.feed-list-container .posts-list .post-item .post-actions .block-post-btn {
+  background-color: rgba(227, 209, 47, 0.2);
+}
+.feed-list-container .posts-list .post-item .post-actions .block-post-btn:hover:not(:disabled) {
+  background-color: rgba(227, 209, 47, 0.6);
+}
+.feed-list-container .posts-list .post-item .post-actions .unblock-post-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-actions .unblock-post-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn {
+  width: 100%;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn i {
+  margin-right: 5px;
+  transition: transform 0.3s ease;
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.active {
+  background-color: #ffffff;
+  color: #000000;
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.active i {
+  transform: rotate(180deg);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.deleted-btn {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.deleted-btn.active {
+  background-color: #ffffff;
+  color: #f44336;
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.blocked-btn {
+  background-color: rgba(227, 209, 47, 0.2);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.blocked-btn.active {
+  background-color: #ffffff;
+  color: #e3d12f;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  transition: all 0.4s ease;
+  transform-origin: top;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section.hidden {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  transform: scaleY(0);
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section.visible {
+  max-height: 400px;
+  opacity: 1;
+  transform: scaleY(1);
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-header .comment-author {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-header .comment-date {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-content {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+.feed-list-container .no-posts {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  opacity: 0.8;
 }
 
 /*# sourceMappingURL=style.css.map */

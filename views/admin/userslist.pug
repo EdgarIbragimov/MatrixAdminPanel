@@ -49,7 +49,10 @@ block content
                                             a.dropdown-item.status-blocked(href="#") blocked
                                 .buttons-group.d-flex.gap-2
                                     button.btn.btn-success.save-changes(data-id=user.id) Save Changes
-                                    button.btn.btn-outline-light.user-friends(data-id=user.id) User's Friends
+                                    button.btn.btn-outline-light.user-friends(
+                                        data-id=user.id
+                                        data-protocol=protocol
+                                    ) User's Friends
                                     button.btn.btn-outline-light.user-feed(data-id=user.id) User's Feed
                         td.avatar-cell
                             .user-avatar

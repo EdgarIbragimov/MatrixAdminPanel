@@ -1,10 +1,41 @@
 [
   {
+    "id": "news-blocked-test",
+    "userId": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+    "content": "This post was blocked by the admin, because it violated the community rules.",
+    "date": "2024-04-02T11:30:00Z",
+    "likes": [],
+    "comments": [],
+    "isBlocked": true,
+    "isDeleted": false
+  },
+  {
+    "id": "news-deleted-test",
+    "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+    "content": "Time to shy away from the matrix.",
+    "date": "2024-04-01T12:30:00Z",
+    "likes": [
+      "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"
+    ],
+    "comments": [
+      {
+        "id": "comment-deleted-001",
+        "userId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "content": "Apparantly, this post was deleted by the admin.",
+        "date": "2024-04-01T12:35:00Z"
+      }
+    ],
+    "isDeleted": true,
+    "isBlocked": false
+  },
+  {
     "id": "news-001",
     "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
     "content": "Just finished setting up my new matrix profile! Excited to connect with everyone here.",
     "date": "2024-03-15T10:30:00Z",
-    "likes": ["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"],
+    "likes": [
+      "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"
+    ],
     "comments": [
       {
         "id": "comment-001",
@@ -12,7 +43,8 @@
         "content": "Welcome to matrix!",
         "date": "2024-03-15T10:35:00Z"
       }
-    ]
+    ],
+    "isBlocked": false
   },
   {
     "id": "news-002",
@@ -20,8 +52,8 @@
     "content": "Working on some cool new features for our platform. Stay tuned!",
     "date": "2024-03-14T15:20:00Z",
     "likes": [
-      "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
-      "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7"
+      "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+      "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e"
     ],
     "comments": [
       {
@@ -29,8 +61,15 @@
         "userId": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
         "content": "Can't wait to see what you're working on!",
         "date": "2024-03-14T15:25:00Z"
+      },
+      {
+        "id": "comment-1741363648181",
+        "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "content": "hasgdja\naskndasdn",
+        "date": "2025-03-07T16:07:28.181Z"
       }
-    ]
+    ],
+    "isBlocked": true
   },
   {
     "id": "news-003",
@@ -63,7 +102,10 @@
     "userId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
     "content": "Finally solved that tricky bug in my code! Sometimes all you need is a fresh perspective. #debugging",
     "date": "2024-03-11T16:30:00Z",
-    "likes": ["a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6"],
+    "likes": [
+      "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+      "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e"
+    ],
     "comments": [
       {
         "id": "comment-004",
