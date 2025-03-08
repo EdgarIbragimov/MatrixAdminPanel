@@ -21,6 +21,26 @@
         "friendId": "d4e5f6g7-h8i9-0j1k-2l3m-n4o5p6q7r8s9",
         "status": "accepted",
         "dateAdded": "2024-03-15"
+      },
+      {
+        "friendId": "e5f6g7h8-i9j0-1k2l-3m4n-o5p6q7r8s9t0",
+        "status": "accepted",
+        "dateAdded": "2024-03-20"
+      },
+      {
+        "friendId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
+        "status": "accepted",
+        "dateAdded": "2024-03-22"
+      },
+      {
+        "friendId": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
+        "status": "accepted",
+        "dateAdded": "2024-03-25"
+      },
+      {
+        "friendId": "h8i9j0k1-l2m3-4n5o-6p7q-r8s9t0u1v2w3",
+        "status": "pending",
+        "dateAdded": "2024-04-01"
       }
     ]
   },
@@ -38,9 +58,19 @@
         "dateAdded": "2024-02-28"
       },
       {
-        "friendId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
-        "status": "pending",
+        "friendId": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
+        "status": "accepted",
+        "dateAdded": "2024-03-05"
+      },
+      {
+        "friendId": "h8i9j0k1-l2m3-4n5o-6p7q-r8s9t0u1v2w3",
+        "status": "blocked",
         "dateAdded": "2024-03-10"
+      },
+      {
+        "friendId": "i9j0k1l2-m3n4-5o6p-7q8r-s9t0u1v2w3x4",
+        "status": "pending",
+        "dateAdded": "2024-03-15"
       }
     ]
   },
@@ -53,9 +83,14 @@
         "dateAdded": "2024-03-05"
       },
       {
-        "friendId": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
-        "status": "blocked",
-        "dateAdded": "2024-01-10"
+        "friendId": "d4e5f6g7-h8i9-0j1k-2l3m-n4o5p6q7r8s9",
+        "status": "pending",
+        "dateAdded": "2024-03-15"
+      },
+      {
+        "friendId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
+        "status": "accepted",
+        "dateAdded": "2024-03-20"
       }
     ]
   },
@@ -71,6 +106,156 @@
         "friendId": "i9j0k1l2-m3n4-5o6p-7q8r-s9t0u1v2w3x4",
         "status": "pending",
         "dateAdded": "2024-03-18"
+      },
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "pending",
+        "dateAdded": "2024-03-01"
+      },
+      {
+        "friendId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "status": "blocked",
+        "dateAdded": "2024-03-22"
+      }
+    ]
+  },
+  {
+    "userId": "d4e5f6g7-h8i9-0j1k-2l3m-n4o5p6q7r8s9",
+    "friends": [
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "accepted",
+        "dateAdded": "2024-03-15"
+      },
+      {
+        "friendId": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+        "status": "pending",
+        "dateAdded": "2024-03-15"
+      },
+      {
+        "friendId": "e5f6g7h8-i9j0-1k2l-3m4n-o5p6q7r8s9t0",
+        "status": "accepted",
+        "dateAdded": "2024-03-25"
+      }
+    ]
+  },
+  {
+    "userId": "e5f6g7h8-i9j0-1k2l-3m4n-o5p6q7r8s9t0",
+    "friends": [
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "accepted",
+        "dateAdded": "2024-03-20"
+      },
+      {
+        "friendId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "status": "accepted",
+        "dateAdded": "2024-02-28"
+      },
+      {
+        "friendId": "d4e5f6g7-h8i9-0j1k-2l3m-n4o5p6q7r8s9",
+        "status": "accepted",
+        "dateAdded": "2024-03-25"
+      },
+      {
+        "friendId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
+        "status": "blocked",
+        "dateAdded": "2024-04-01"
+      }
+    ]
+  },
+  {
+    "userId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
+    "friends": [
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "accepted",
+        "dateAdded": "2024-03-22"
+      },
+      {
+        "friendId": "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7",
+        "status": "accepted",
+        "dateAdded": "2024-03-20"
+      },
+      {
+        "friendId": "e5f6g7h8-i9j0-1k2l-3m4n-o5p6q7r8s9t0",
+        "status": "blocked",
+        "dateAdded": "2024-04-01"
+      },
+      {
+        "friendId": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
+        "status": "pending",
+        "dateAdded": "2024-04-03"
+      }
+    ]
+  },
+  {
+    "userId": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
+    "friends": [
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "accepted",
+        "dateAdded": "2024-03-25"
+      },
+      {
+        "friendId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "status": "accepted",
+        "dateAdded": "2024-03-05"
+      },
+      {
+        "friendId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
+        "status": "pending",
+        "dateAdded": "2024-04-03"
+      },
+      {
+        "friendId": "i9j0k1l2-m3n4-5o6p-7q8r-s9t0u1v2w3x4",
+        "status": "accepted",
+        "dateAdded": "2024-03-30"
+      }
+    ]
+  },
+  {
+    "userId": "h8i9j0k1-l2m3-4n5o-6p7q-r8s9t0u1v2w3",
+    "friends": [
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "pending",
+        "dateAdded": "2024-04-01"
+      },
+      {
+        "friendId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "status": "blocked",
+        "dateAdded": "2024-03-10"
+      },
+      {
+        "friendId": "c3d4e5f6-g7h8-9i0j-1k2l-m3n4o5p6q7r8",
+        "status": "accepted",
+        "dateAdded": "2024-02-20"
+      }
+    ]
+  },
+  {
+    "userId": "i9j0k1l2-m3n4-5o6p-7q8r-s9t0u1v2w3x4",
+    "friends": [
+      {
+        "friendId": "c83f5fd3-bc4f-4e0c-9a15-dbefd95b840e",
+        "status": "pending",
+        "dateAdded": "2024-04-02"
+      },
+      {
+        "friendId": "a1b2c3d4-e5f6-7g8h-9i0j-k1l2m3n4o5p6",
+        "status": "pending",
+        "dateAdded": "2024-03-15"
+      },
+      {
+        "friendId": "c3d4e5f6-g7h8-9i0j-1k2l-m3n4o5p6q7r8",
+        "status": "pending",
+        "dateAdded": "2024-03-18"
+      },
+      {
+        "friendId": "g7h8i9j0-k1l2-3m4n-5o6p-q7r8s9t0u1v2",
+        "status": "accepted",
+        "dateAdded": "2024-03-30"
       }
     ]
   }

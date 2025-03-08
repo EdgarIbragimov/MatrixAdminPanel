@@ -302,6 +302,29 @@ class DataManager {
     return false;
   }
 
+  async deleteComment(postId, commentId) {
+    const newsData = await this.getNewsData();
+    const postIndex = newsData.findIndex((post) => post.id === postId);
+
+    if (postIndex === -1) return false;
+
+    const commentIndex = newsData[postIndex].comments.findIndex(
+      (comment) => comment.id === commentId
+    );
+
+    if (commentIndex === -1) return false;
+
+    // Remove comment
+    newsData[postIndex].comments.splice(commentIndex, 1);
+
+    const success = await this.writeJSONFile(PATHS.news, newsData);
+    if (success) {
+      this.cache.news = newsData;
+      return true;
+    }
+    return false;
+  }
+
   async getAllPostsWithUserInfo() {
     const newsData = await this.getNewsData();
     const users = await this.getUsersData();

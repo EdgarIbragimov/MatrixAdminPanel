@@ -1,0 +1,92 @@
+//- Post item mixin
+mixin postItem(post)
+  article.post-item(
+    class=`${post.isDeleted ? 'deleted-post' : ''} ${post.isBlocked ? 'blocked-post' : ''}`
+    data-original-content=post.content
+  )
+    header.post-header
+      .post-author-info
+        img.author-avatar(src=post.userPhoto || "/images/default.png", alt=post.userName)
+        .author-details
+          h3.author-name #{post.userName}
+          time.post-date(datetime=post.date) #{new Date(post.date).toLocaleString()}
+      
+      .post-status-badges
+        if post.isDeleted
+          span.deleted-status.status-badge DELETED
+        if post.isBlocked
+          span.blocked-status.status-badge BLOCKED
+    
+    section.post-content
+      if post.isDeleted
+        p.system-message This post was deleted by the admin, because it violated the community rules.
+      else if post.isBlocked
+        p.system-message This post was blocked by the admin, because it violated the community rules.
+      else
+        p #{post.content}
+    
+    footer.post-meta
+      span.likes-count
+        span(style="color: #ff4d4f; margin-right: 5px; font-size: 1.5em;") ♥
+        | #{post.likes.length}
+      span.comments-count
+        i.fas.fa-comment
+        | #{post.comments.length} Commentaries
+    
+      .post-actions
+        button.delete-post-btn.api-action(
+          data-post-id=post.id,
+          disabled=post.isDeleted,
+          title="Mark as deleted"
+        ) DELETE
+        
+        button.restore-post-btn.api-action(
+          data-post-id=post.id,
+          disabled=!post.isDeleted,
+          title="Restore deleted post"
+        ) RESTORE
+        
+        button.block-post-btn.api-action(
+          data-post-id=post.id,
+          disabled=post.isBlocked || post.isDeleted,
+          title="Block this post"
+        ) BLOCK
+        
+        button.unblock-post-btn.api-action(
+          data-post-id=post.id,
+          disabled=!post.isBlocked || post.isDeleted,
+          title="Unblock this post"
+        ) UNBLOCK
+    
+    if post.comments && post.comments.length > 0
+      +commentsSection(post)
+    else 
+      section.comments-container
+        p.no-comments-message No commentaries
+
+//- Comments section mixin
+mixin commentsSection(post)
+  section.comments-container
+    button.toggle-comments-btn.api-action(
+      class=post.isDeleted ? "deleted-btn" : post.isBlocked ? "blocked-btn" : ""
+    ) SHOW COMMENTARIES
+    
+    .comments-section.hidden
+      each comment in post.comments
+        +commentItem(comment, post.id)
+
+//- Comment item mixin
+mixin commentItem(comment, postId)
+  article.comment-item
+    header.comment-header
+      h4.comment-author #{comment.userName || 'ID: ' + comment.userId}
+      time.comment-date(datetime=comment.date) #{new Date(comment.date).toLocaleString()}
+    .comment-content #{comment.content}
+    footer.comment-actions
+      button.btn.btn-sm.btn-outline-danger.delete-comment-btn.api-action(
+        data-post-id=postId,
+        data-comment-id=comment.id,
+        title="Delete comment"
+      )
+        i.fas.fa-times
+        span.ms-1 Delete 

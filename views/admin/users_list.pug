@@ -4,8 +4,8 @@ block content
     .user-list-container
         h1 User List
         table.user-table
-            if userslist && userslist.length > 0
-                each user in userslist
+            if users && users.length > 0
+                each user in users
                     tr.user-row
                         td.user-cell
                             .user-details
@@ -30,23 +30,23 @@ block content
                                         )
                                         label(for="floatingBirthdate") Birthdate
                                 .role.input-group.mb-3
-                                    input.form-control(type="text", value = user.role, class=`role-${user.role}`,readonly)
+                                    input.form-control(type="text", value=user.role, class=`role-${user.role}`, readonly)
                                     button.btn.btn-outline-secondary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false") Change
                                     ul.dropdown-menu.dropdown-menu-dark
                                         li
-                                            a.dropdown-item.role-admin(href="#") admin
+                                            a.dropdown-item.role-admin(href="javascript:void(0);" data-value="admin") admin
                                         li
-                                            a.dropdown-item.role-user(href="#") user
+                                            a.dropdown-item.role-user(href="javascript:void(0);" data-value="user") user
                                 .status.input-group.mb-3
-                                    input.form-control(type="text", value = user.status, class=`status-${user.status}`, readonly)
+                                    input.form-control(type="text", value=user.status, class=`status-${user.status}`, readonly)
                                     button.btn.btn-outline-secondary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false") Change
                                     ul.dropdown-menu.dropdown-menu-dark
                                         li
-                                            a.dropdown-item.status-active(href="#") active
+                                            a.dropdown-item.status-active(href="javascript:void(0);" data-value="active") active
                                         li
-                                            a.dropdown-item.status-unverified(href="#") unverified
+                                            a.dropdown-item.status-unverified(href="javascript:void(0);" data-value="unverified") unverified
                                         li
-                                            a.dropdown-item.status-blocked(href="#") blocked
+                                            a.dropdown-item.status-blocked(href="javascript:void(0);" data-value="blocked") blocked
                                 .buttons-group.d-flex.gap-2
                                     button.btn.btn-success.save-changes(data-id=user.id) Save Changes
                                     button.btn.btn-outline-light.user-friends(

@@ -1,8 +1,16 @@
 extends ../layout
 
 block content
+    input#currentUserId(type="hidden" value=currentUserId)
+    
+    .back-button-container.mb-3
+        a.btn.btn-dark.back-btn(href="/admin/userslist")
+            i.fas.fa-arrow-left.me-2
+            | Back to Users
+            
     .friends-list-container
         h1 Friends of User
+        
         table.friends-table
             if friends && friends.length
                 each friend in friends
@@ -16,9 +24,17 @@ block content
                             .friend-email #{friend.email}
                         td.col-md-4
                             .friend-status
-                                span(class=`status-${friend.status.toLowerCase()}`) #{friend.status}
+                                if friend.status
+                                    span(class=`status-${friend.status.toLowerCase()}`) #{friend.status}
+                                else
+                                    span.status-unknown Unknown
                         td.col-md-5
-                            button.btn.btn-outline-danger.delete-friend-btn(type="button" data-friend-id=friend.id title="Delete from friends?") X
+                            button.btn.btn-outline-danger.delete-friend-btn(
+                                type="button" 
+                                data-friend-id=friend.friendId || friend.id 
+                                title="Delete from friends?"
+                            ) 
                                 i.fas.fa-times-circle
+                                span.ms-1 X
             else
                 .no-friends No friends found
