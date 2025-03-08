@@ -1,0 +1,979 @@
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold-Italic.woff2") format("woff2"), url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold-Italic.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff2/JetBrainsMono-Bold.woff2") format("woff2"), url("https://cdn.jsdelivr.net/gh/JetBrains/JetBrainsMono/web/woff/JetBrainsMono-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  margin: 0;
+  background-color: #000000;
+}
+
+html {
+  min-width: 1024px;
+  overflow-x: auto;
+}
+
+.title-container {
+  background-color: #151515;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 10%;
+}
+
+.title {
+  position: absolute;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.logout-button {
+  position: absolute;
+  right: 10%;
+  background: none;
+  border: none;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.logout-button:hover {
+  transform: translateY(-3px);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.user-list-container {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 60%;
+  min-width: 900px;
+  overflow-x: auto;
+}
+.user-list-container h1 {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid #7b7b7b;
+}
+.user-list-container .no-users {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+.user-list-container .form-control {
+  background-color: #000000 !important;
+  border-color: #7b7b7b !important;
+  color: #ffffff !important;
+}
+.user-list-container .form-control:focus, .user-list-container .form-control:active {
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
+}
+.user-list-container .form-floating label {
+  color: #ffffff !important;
+}
+.user-list-container .form-floating label::after {
+  background-color: #000000 !important;
+}
+.user-list-container .form-floating > .form-control:focus ~ label,
+.user-list-container .form-floating > .form-control:not(:placeholder-shown) ~ label {
+  opacity: 1;
+  transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem);
+}
+.user-list-container .status-active {
+  color: #4caf50 !important;
+}
+.user-list-container .status-unverified {
+  color: #e3d12f !important;
+}
+.user-list-container .status-blocked {
+  color: #f44336 !important;
+}
+.user-list-container input.status-active {
+  color: #4caf50 !important;
+  font-weight: 500;
+}
+.user-list-container input.status-unverified {
+  color: #e3d12f !important;
+  font-weight: 500;
+}
+.user-list-container input.status-blocked {
+  color: #f44336 !important;
+  font-weight: 500;
+}
+.user-list-container .role-admin {
+  color: #40e0d0 !important;
+}
+.user-list-container .role-user {
+  color: #ffffff !important;
+}
+.user-list-container input.role-admin {
+  color: #40e0d0 !important;
+  font-weight: 500;
+}
+.user-list-container input.role-user {
+  color: #ffffff !important;
+}
+.user-list-container .buttons-group {
+  min-width: 450px;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.user-list-container .buttons-group button {
+  flex: 1;
+  min-width: 120px;
+}
+.user-list-container .buttons-group .save-changes {
+  width: 180px;
+  white-space: nowrap;
+}
+.user-list-container .buttons-group .btn-outline-light {
+  width: 180px;
+  background-color: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.user-list-container .buttons-group .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+.user-list-container .buttons-group .btn-outline-light:active {
+  color: #000000;
+}
+.user-list-container .user-table {
+  width: 100%;
+  min-width: 880px;
+  border-spacing: 0;
+}
+.user-list-container .user-table .user-row {
+  border-bottom: 1px solid #7b7b7b;
+}
+.user-list-container .user-table .user-row:last-child {
+  border-bottom: none;
+}
+.user-list-container .user-table .user-row td {
+  vertical-align: middle;
+}
+.user-list-container .user-table .user-row .user-cell {
+  width: 40%;
+  min-width: 500px;
+  padding: 10px;
+}
+.user-list-container .user-table .user-row .user-cell .user-details {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1;
+}
+.user-list-container .user-table .user-row .user-cell .input-group {
+  flex-wrap: nowrap;
+  min-width: 450px;
+  max-width: 100%;
+}
+.user-list-container .user-table .user-row .user-cell .input-group .form-control {
+  min-width: 200px;
+  flex-shrink: 1;
+}
+.user-list-container .user-table .user-row .user-cell .input-group .btn {
+  flex-shrink: 0;
+}
+.user-list-container .user-table .user-row .avatar-cell {
+  width: 40%;
+  padding: 20px;
+  text-align: center;
+}
+.user-list-container .user-table .user-row .avatar-cell .user-avatar {
+  width: 280px;
+  height: 280px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.user-list-container .user-table .user-row .avatar-cell .user-avatar:hover {
+  transform: translate(0, -10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.user-list-container .user-table .user-row .avatar-cell .avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.friends-list-container {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px auto;
+  width: 60%;
+  min-width: 900px;
+  max-width: 1200px;
+  overflow-x: auto;
+}
+.friends-list-container h1 {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid #7b7b7b;
+  margin: 0px;
+}
+.friends-list-container .friends-table {
+  width: 100%;
+  min-width: 880px;
+  border-spacing: 0;
+}
+.friends-list-container .friends-table .friend-row {
+  border-bottom: 1px solid #7b7b7b;
+  padding: 10px 0px;
+  height: 120px;
+}
+.friends-list-container .friends-table .friend-row:last-child {
+  border-bottom: none;
+}
+.friends-list-container .friends-table .friend-row .col-md-1 {
+  min-width: 120px;
+  padding-left: 15px;
+}
+.friends-list-container .friends-table .friend-row .friend-avatar {
+  width: 100px;
+  height: 100%;
+}
+.friends-list-container .friends-table .friend-row .friend-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+}
+.friends-list-container .friends-table .friend-row .friend-avatar img:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-2 {
+  width: 250px;
+  min-width: 200px;
+}
+.friends-list-container .friends-table .friend-row .col-md-2 .friend-name {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 10px;
+}
+.friends-list-container .friends-table .friend-row .col-md-3 {
+  width: 300px;
+  min-width: 250px;
+}
+.friends-list-container .friends-table .friend-row .col-md-3 .friend-email {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 {
+  width: 200px;
+  min-width: 150px;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status {
+  text-align: center;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span.status-accepted {
+  color: #4caf50;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span.status-pending {
+  color: #e3d12f;
+  border: 1px solid rgba(227, 209, 47, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-4 .friend-status span.status-blocked {
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+.friends-list-container .friends-table .friend-row .col-md-5 {
+  width: auto;
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn {
+  font-size: 24px;
+  width: 120px;
+  height: 60px;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn:hover {
+  background-color: #f44336 !important;
+  transform: translateY(-2px);
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn:hover .fa-times-circle {
+  color: #ffffff !important;
+}
+.friends-list-container .friends-table .friend-row .col-md-5 .delete-friend-btn:active {
+  transform: translateY(0);
+}
+.friends-list-container .no-friends {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.feed-list-container {
+  background-color: #151515;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 70%;
+  min-width: 900px;
+  max-width: 1200px;
+}
+.feed-list-container h1 {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  border-bottom: 1px solid #7b7b7b;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+}
+.feed-list-container .posts-list .post-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #7b7b7b;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+  position: relative;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+.feed-list-container .posts-list .post-item.deleted-post {
+  border-color: rgba(244, 67, 54, 0.5);
+  background-color: rgba(244, 67, 54, 0.1);
+}
+.feed-list-container .posts-list .post-item.blocked-post {
+  border-color: rgba(227, 209, 47, 0.5);
+  background-color: rgba(227, 209, 47, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info {
+  display: flex;
+  align-items: center;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info .author-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  margin-right: 12px;
+  object-fit: cover;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info .author-details .author-name {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+.feed-list-container .posts-list .post-item .post-header .post-author-info .author-details .post-date {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0.7;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges {
+  display: flex;
+  gap: 10px;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges .status-badge {
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges .deleted-status {
+  background-color: rgba(244, 67, 54, 0.8);
+  color: #ffffff;
+}
+.feed-list-container .posts-list .post-item .post-header .post-status-badges .blocked-status {
+  background-color: rgba(227, 209, 47, 0.8);
+  color: #ffffff;
+}
+.feed-list-container .posts-list .post-item .post-content {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.feed-list-container .posts-list .post-item .post-content .system-message {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9em;
+  text-align: center;
+  padding: 8px 0;
+}
+.feed-list-container .posts-list .post-item .post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  border-top: 1px solid #7b7b7b;
+  border-bottom: 1px solid #7b7b7b;
+}
+.feed-list-container .posts-list .post-item .post-meta span {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+.feed-list-container .posts-list .post-item .post-meta span i {
+  margin-right: 8px;
+}
+.feed-list-container .posts-list .post-item .post-meta .likes-count .heart-icon {
+  color: #ff4d4f;
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 15px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 15px;
+  justify-content: space-between;
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .api-action {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  display: inline-block;
+  flex: 1;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  min-width: 90px;
+  border: 1px solid;
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .api-action:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .api-action:active:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .api-action:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .delete-post-btn {
+  color: #f44336;
+  border-color: rgba(244, 67, 54, 0.3);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .delete-post-btn:hover:not(:disabled) {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .restore-post-btn {
+  color: #4caf50;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .restore-post-btn:hover:not(:disabled) {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .block-post-btn {
+  color: #e3d12f;
+  border-color: rgba(227, 209, 47, 0.3);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .block-post-btn:hover:not(:disabled) {
+  background-color: rgba(227, 209, 47, 0.1);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .unblock-post-btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+.feed-list-container .posts-list .post-item .post-meta .post-actions .unblock-post-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  padding: 6px 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.deleted-btn {
+  color: #f44336;
+  border-color: rgba(244, 67, 54, 0.3);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.deleted-btn:hover {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.blocked-btn {
+  color: #e3d12f;
+  border-color: rgba(227, 209, 47, 0.3);
+}
+.feed-list-container .posts-list .post-item .comments-container .toggle-comments-btn.blocked-btn:hover {
+  background-color: rgba(227, 209, 47, 0.1);
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 10px;
+  max-height: 400px;
+  overflow-y: auto;
+  transition: all 0.4s ease;
+  transform-origin: top;
+  will-change: transform, opacity, max-height;
+  transform: translateZ(0);
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section.hidden {
+  display: block;
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  transform: scaleY(0);
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section.visible {
+  max-height: 400px;
+  opacity: 1;
+  transform: scaleY(1);
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-header .comment-author {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-header .comment-date {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 12px;
+  opacity: 0.8;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-content {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-actions .delete-comment-btn {
+  padding: 2px 8px;
+  font-size: 12px;
+  color: #f44336;
+  border-color: #f44336;
+  background-color: transparent;
+}
+.feed-list-container .posts-list .post-item .comments-container .comments-section .comment-item .comment-actions .delete-comment-btn:hover {
+  background-color: rgba(244, 67, 54, 0.2);
+}
+.feed-list-container .no-posts {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  opacity: 0.8;
+}
+
+.message-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 300px;
+}
+
+.message {
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+  opacity: 0.9;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  will-change: transform, opacity;
+  transform: translateZ(0);
+}
+.message.success-message {
+  background-color: rgba(76, 175, 80, 0.9);
+  border-left: 4px solid #4caf50;
+}
+.message.error-message {
+  background-color: rgba(244, 67, 54, 0.9);
+  border-left: 4px solid #f44336;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0.9;
+  }
+}
+.back-button-container {
+  margin: 20px auto;
+  width: 70%;
+  min-width: 900px;
+  max-width: 1200px;
+  position: absolute;
+  left: 0;
+  top: 120px;
+  padding-left: 20px;
+  z-index: 100;
+}
+.back-button-container .back-btn {
+  display: inline-flex;
+  align-items: center;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+  background-color: #000000;
+  border: 1px solid #ffffff;
+}
+.back-button-container .back-btn i {
+  margin-right: 10px !important;
+}
+.back-button-container .back-btn:hover {
+  background-color: #151515;
+  transform: translateX(-5px);
+}
+
+.comments-container .toggle-comments-btn,
+.comments-container .no-comments-message {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+.comments-container .toggle-comments-btn {
+  letter-spacing: 0.5px;
+}
+.comments-container .no-comments-message {
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5px;
+  padding: 15px;
+  text-align: center;
+  margin-top: 10px;
+  font-style: normal;
+}
+
+.error-container {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-container .error-code {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 150px;
+  margin: 0;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s infinite;
+}
+.error-container .error-message {
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 30px;
+  margin-top: 20px;
+  opacity: 0.8;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.loading-indicator {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+}
+.btn-loading:before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 8px);
+  left: calc(50% - 8px);
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.offline-indicator {
+  display: none;
+  background-color: #ff4d4f;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease-out;
+  will-change: transform;
+}
+
+.offline .offline-indicator {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* Loading indicators */
+.loading {
+  position: relative;
+  pointer-events: none;
+}
+.loading:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  margin-left: -0.5em;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  will-change: transform;
+}
+.loading.btn {
+  color: transparent !important;
+}
+.loading.btn:hover {
+  color: transparent !important;
+}
+.loading.btn:after {
+  width: 1em;
+  height: 1em;
+}
+.loading.container-loading {
+  min-height: 100px;
+}
+.loading.container-loading:after {
+  width: 2em;
+  height: 2em;
+  margin-top: -1em;
+  margin-left: -1em;
+  border-width: 3px;
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* Online/Offline State */
+.offline-indicator {
+  display: none;
+  background-color: #ff4d4f;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  animation: slideDown 0.3s ease-out;
+  will-change: transform;
+}
+
+.offline .offline-indicator {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=style.css.map */

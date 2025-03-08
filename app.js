@@ -12,7 +12,19 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+// Раскомментируйте только ОДНУ из следующих строк в зависимости от того,
+// какую версию вы хотите использовать:
+
+// Для разработки без сборок (исходные файлы из public):
 app.use(express.static(path.join(__dirname, "public")));
+
+// Для использования сборки Gulp:
+//app.use(express.static(path.join(__dirname, "dist-gulp")));
+
+// Для использования сборки Webpack:
+// app.use(express.static(path.join(__dirname, "dist-webpack")));
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 app.use(helmet());

@@ -1,46 +1,27 @@
 import path from "path";
 import { fileURLToPath } from "url";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import { merge } from "webpack-merge";
+import CopyPlugin from "copy-webpack-plugin";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Данные по умолчанию для шаблонов
-const defaultData = {
-  title: "Default Title",
-  error: {
-    status: 404,
-    stack: "",
-    message: "Page not found",
-  },
-  userslist: [],
-};
-
-export default {
-  mode: "development",
+// Базовая конфигурация
+const commonConfig = {
   entry: {
-    main: "./bin/www",
-    admin: "./public/javascripts/admin.js",
-    welcomepage: "./public/javascripts/welcomepage.js",
-    layout: "./views/layout.pug",
-    userslist: "./views/admin/userslist.pug",
-    welcome: "./views/welcome_page.pug",
-    error: "./views/error.pug",
-    friends: "./views/friends.pug",
-    user_layout: "./views/user_layout.pug",
-    profile: "./views/profile_page.pug",
-    friendsfeed: "./views/friends_feed.pug",
-    feed: "./views/admin/feed.pug",
+    main: ["./public/javascripts/admin.js", "./public/stylesheets/style.scss"],
   },
   output: {
-    path: path.resolve(__dirname, "dist/webpack"),
-    filename: "js/[name].bundle.js",
-    clean: true,
+    filename: "js/[name].[contenthash].js",
+    path: path.resolve(__dirname, "dist-webpack"),
+    publicPath: "",
   },
   module: {
     rules: [
+      // JavaScript
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -51,8 +32,9 @@ export default {
           },
         },
       },
+      // SCSS
       {
-        test: /\.less$/,
+        test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           "css-loader",
@@ -64,98 +46,102 @@ export default {
               },
             },
           },
-          "less-loader",
+          "sass-loader",
         ],
       },
+      // Изображения
       {
-        test: /\.pug$/,
-        use: [
-          {
-            loader: "pug-loader",
-            options: {
-              pretty: true,
-              self: true,
-              globals: ["defaultData"],
-              data: defaultData,
-            },
-          },
-        ],
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "images/[name].[hash][ext]",
+        },
+      },
+      // Шрифты
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: "fonts/[name].[hash][ext]",
+        },
       },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "css/[name].css",
+      filename: "css/[name].[contenthash].css",
     }),
-    new HtmlWebpackPlugin({
-      template: "./views/layout.pug",
-      filename: "layout.html",
-      chunks: ["layout", "main"],
-      templateParameters: defaultData,
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/welcome_page.pug",
-      filename: "welcome.html",
-      chunks: ["welcome", "welcomepage"],
-      templateParameters: defaultData,
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/admin/userslist.pug",
-      filename: "admin/userslist.html",
-      chunks: ["userslist", "admin"],
-      templateParameters: defaultData,
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/error.pug",
-      filename: "error.html",
-      chunks: ["error"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/friends.pug",
-      filename: "friends.html",
-      chunks: ["friends"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/user_layout.pug",
-      filename: "user_layout.html",
-      chunks: ["user_layout"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/profile_page.pug",
-      filename: "profile.html",
-      chunks: ["profile"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/friends_feed.pug",
-      filename: "friends_feed.html",
-      chunks: ["friendsfeed"],
-    }),
-    new HtmlWebpackPlugin({
-      template: "./views/admin/feed.pug",
-      filename: "admin/feed.html",
-      chunks: ["feed", "admin"],
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "public/images",
+          to: "images",
+        },
+        {
+          from: "public/javascripts",
+          to: "javascripts",
+        },
+        {
+          from: "public/stylesheets/*.css",
+          to: "stylesheets/[name][ext]",
+          noErrorOnMissing: true,
+        },
+        // Копируем HTML из Gulp сборки
+        {
+          from: "dist-gulp/views",
+          to: "views",
+          noErrorOnMissing: true,
+        },
+      ],
     }),
   ],
+};
+
+// Конфигурация для разработки
+const developmentConfig = {
+  mode: "development",
+  devtool: "source-map",
   devServer: {
-    static: {
-      directory: path.join(__dirname, "dist/webpack"),
-    },
-    port: 9000,
+    static: path.resolve(__dirname, "dist-webpack"),
     hot: true,
-    compress: true,
+    port: 8080,
     open: true,
   },
+};
+
+// Конфигурация для продакшена
+const productionConfig = {
+  mode: "production",
+  devtool: false,
   optimization: {
+    minimizer: [
+      new TerserPlugin({
+        extractComments: false,
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
+      }),
+    ],
     splitChunks: {
       chunks: "all",
-      name: "vendors",
+      cacheGroups: {
+        vendor: {
+          name: "vendors",
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "all",
+        },
+      },
     },
   },
-  resolve: {
-    extensions: [".js", ".pug"],
-    alias: {
-      views: path.resolve(__dirname, "views/"),
-    },
-  },
+};
+
+// Экспорт итоговой конфигурации в зависимости от режима
+export default (env, argv) => {
+  const isProduction = argv.mode === "production";
+  const config = isProduction ? productionConfig : developmentConfig;
+
+  return merge(commonConfig, config);
 };
