@@ -11,35 +11,80 @@ block content
                             .user-details
                                 .user-name.input-group.mb-3
                                     .form-floating
-                                        input.form-control(type="text", placeholder=user.fullname, id="floatingInputValue", value=user.fullname, aria-describedby="button-addon2")
-                                        label(for="floatingInputValue") Fullname
-                                    button.btn.btn-outline-secondary(type="button", id="button-addon2") Change
+                                        input.form-control(
+                                            type="text", 
+                                            placeholder=user.fullname, 
+                                            id=`fullname-${user.id}`, 
+                                            name=`fullname-${user.id}`, 
+                                            value=user.fullname, 
+                                            aria-describedby=`fullname-btn-${user.id}`
+                                        )
+                                        label(for=`fullname-${user.id}`) Fullname
+                                    button.btn.btn-outline-secondary(
+                                        type="button", 
+                                        id=`fullname-btn-${user.id}`
+                                    ) Change
                                 .email.input-group.mb-3
                                     .form-floating
-                                        input.form-control(type="email", placeholder="name@example.ru", id="floatingInputValue", value=user.email, aria-describedby="button-addon2")
-                                        label(for="floatingInputValue") Email
-                                    button.btn.btn-outline-secondary(type="button", id="button-addon2") Change
+                                        input.form-control(
+                                            type="email", 
+                                            placeholder="name@example.ru", 
+                                            id=`email-${user.id}`, 
+                                            name=`email-${user.id}`, 
+                                            value=user.email, 
+                                            aria-describedby=`email-btn-${user.id}`
+                                        )
+                                        label(for=`email-${user.id}`) Email
+                                    button.btn.btn-outline-secondary(
+                                        type="button", 
+                                        id=`email-btn-${user.id}`
+                                    ) Change
                                 .birthdate.input-group.mb-3
                                     .form-floating
                                         input.form-control(
                                             type="date", 
                                             placeholder="Birthdate", 
-                                            id="floatingBirthdate", 
+                                            id=`birthdate-${user.id}`, 
+                                            name=`birthdate-${user.id}`, 
                                             value=user.birthdate, 
-                                            aria-describedby="birthdate-button"
+                                            aria-describedby=`birthdate-btn-${user.id}`
                                         )
-                                        label(for="floatingBirthdate") Birthdate
+                                        label(for=`birthdate-${user.id}`) Birthdate
                                 .role.input-group.mb-3
-                                    input.form-control(type="text", value=user.role, class=`role-${user.role}`, readonly)
-                                    button.btn.btn-outline-secondary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false") Change
+                                    input.form-control(
+                                        type="text", 
+                                        id=`role-${user.id}`, 
+                                        name=`role-${user.id}`, 
+                                        value=user.role, 
+                                        class=`role-${user.role}`, 
+                                        readonly
+                                    )
+                                    button.btn.btn-outline-secondary.dropdown-toggle(
+                                        type="button", 
+                                        id=`role-btn-${user.id}`, 
+                                        data-bs-toggle="dropdown", 
+                                        aria-expanded="false"
+                                    ) Change
                                     ul.dropdown-menu.dropdown-menu-dark
                                         li
                                             a.dropdown-item.role-admin(href="javascript:void(0);" data-value="admin") admin
                                         li
                                             a.dropdown-item.role-user(href="javascript:void(0);" data-value="user") user
                                 .status.input-group.mb-3
-                                    input.form-control(type="text", value=user.status, class=`status-${user.status}`, readonly)
-                                    button.btn.btn-outline-secondary.dropdown-toggle(type="button", data-bs-toggle="dropdown", aria-expanded="false") Change
+                                    input.form-control(
+                                        type="text", 
+                                        id=`status-${user.id}`, 
+                                        name=`status-${user.id}`, 
+                                        value=user.status, 
+                                        class=`status-${user.status}`, 
+                                        readonly
+                                    )
+                                    button.btn.btn-outline-secondary.dropdown-toggle(
+                                        type="button", 
+                                        id=`status-btn-${user.id}`, 
+                                        data-bs-toggle="dropdown", 
+                                        aria-expanded="false"
+                                    ) Change
                                     ul.dropdown-menu.dropdown-menu-dark
                                         li
                                             a.dropdown-item.status-active(href="javascript:void(0);" data-value="active") active

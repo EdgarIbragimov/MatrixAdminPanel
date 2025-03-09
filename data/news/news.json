@@ -41,12 +41,6 @@
         "userId": "e5f6g7h8-i9j0-1k2l-3m4n-o5p6q7r8s9t0",
         "content": "Glad to have you here! Looking forward to your contributions.",
         "date": "2024-03-15T11:05:00Z"
-      },
-      {
-        "id": "comment-new-002",
-        "userId": "f6g7h8i9-j0k1-2l3m-4n5o-p6q7r8s9t0u1",
-        "content": "The matrix community keeps growing! Welcome aboard!",
-        "date": "2024-03-15T14:22:00Z"
       }
     ],
     "isBlocked": false,
@@ -288,7 +282,7 @@
         "date": "2024-03-06T17:30:00Z"
       }
     ],
-    "isBlocked": false,
+    "isBlocked": true,
     "isDeleted": false
   },
   {
